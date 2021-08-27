@@ -1,11 +1,12 @@
 import pandas as pd
-import requests
 import io
+import argparse
 
-url = "https://raw.githubusercontent.com/TheRealSeat/TestProblem/main/TestData.csv?token=AS6K546XAD4DBV44RTXRFODBF6A7E"
-download = requests.get(url).content
+parser=argparse.ArgumentParser('csv')
+parser.add_argument('csv')
+args = parser.parse_args()
 
-data = pd.read_csv(io.StringIO(download.decode('utf-8')))
+data = pd.read_csv(args.csv)
 total = 0
 df = pd.DataFrame(data)
 print(df)
