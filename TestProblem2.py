@@ -7,7 +7,6 @@ parser.add_argument('csv', help="Specify CSV file to take data from")
 
 def allResale(csv):
     csv = pd.read_csv(csv)
-    csv = pd.DataFrame(csv, columns = ['Item', 'Resale Value'])
     csv['Resale Value'] = pd.to_numeric(csv['Resale Value'].replace('[^0-9\.]', '', regex=True)).astype(float)
     grouped = csv.groupby('Item')['Resale Value'].sum().reset_index()
     print(grouped)

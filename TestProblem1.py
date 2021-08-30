@@ -10,7 +10,6 @@ def ttlResale(csv):
     #when pulling from the CSV file,
     #you need to initialize the data frame being used
     csv = pd.read_csv(csv)
-    csv = pd.DataFrame(csv)
     csv['Resale Value'] = pd.to_numeric(csv['Resale Value'].replace('[^0-9\.]', '', regex=True)).astype(float)
     total = csv['Resale Value'].sum()
     currency = "${:,.2f}".format(total)
